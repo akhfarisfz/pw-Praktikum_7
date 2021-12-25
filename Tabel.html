@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapital</title>
+    <link rel="stylesheet" href="style.css">
+    <h1 align="Center">Pilih Provinsi dan Kota </h1>
+    <style>
+        body {
+            padding: 25px;
+            background-color: white;
+            color: black;
+            font-size: 25px;
+        }
+        h1{
+            align-content: center;
+        }
+        img {
+            margin-left: 30%;
+            justify-content: center;
+        }
+
+        .container {
+            margin-top: 100px;
+            margin-right: 500px;
+            margin-left: 500px;
+            border: 1px solid black;
+            border-radius: 5pt;
+            text-align: center;
+            padding:20pt;
+        }
+
+        .f-group {
+            float: left;
+            margin-left: 200px;
+            justify-content: space-between;
+        }
+
+        .f-group label {
+            display: table-footer-group;
+            margin-bottom: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 200;
+        }
+
+        select {
+            border: 1px solid black;
+            border-radius: 4px;
+            height: 40px;
+            width: 200px;
+            padding: 0 15px;
+            margin-right: 20px;
+        }
+
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        .hasil {
+            border: 1px solid black;
+            font-size: 24px;
+            margin-top: 20px;
+            padding: 2pt;
+            justify-content: space-between;
+        }
+
+        button {
+            background-color: black;
+            border: 1pt solid white;
+            border-radius: 4pt;
+            color: white;
+            padding: 15px 32px;
+            text-align: left;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <img
+        src="http://assets.kompasiana.com/items/album/2021/08/18/peta-indonesia-611ccb5431a287521e31f7e2.png?t=o&v=770">
+    <div class="container">
+        <div class="f-group">
+            <label for="">Provinsi</label>
+            <select id="Provinsi" onchange="SetProvinsi()">
+                <option>Provinsi</option>
+                <option>Jawa Timur</option>
+                <option>Jawa Tengah</option>
+                <option>Banten</option>
+                <option>Jawa Barat</option>
+                <option>DKI Jakarta</option>
+            </select>
+        </div>
+        <div class="f-group">
+            <label for="">Kota</label>
+            <select id="Kota" onchange="getKota()"></select>
+        </div>
+        <br></br>
+        <p class="hasil" id="result">Output</p>
+        <p>
+            <button onclick="Change()" align="center">Button toogle darkmode</button>
+        </p>
+    </div>
+
+    <script>
+        function SetProvinsi() {
+            var prov = document.getElementById("Provinsi").value;
+            console.log(prov);
+            if (prov === "Jawa Timur") {
+                var array = ['Surabaya', 'Malang', 'Sidoarjo', 'Gresik'];
+            }
+            else if (prov === "Jawa Tengah") {
+                var array = ['Semarang', 'Klaten', 'Solo', 'Salatiga', 'Magelang'];
+            }
+            else if (prov === "Banten") {
+                var array = ['Serang', 'Tangeran', 'Tangerang Selatan', 'Cilegon'];
+            }
+            else if (prov === "Jawa Barat") {
+                var array = ['Bandung', 'Bandung Barat', 'Bekasi', 'Depok', 'Cimahi'];
+            }
+            else if (prov === "DKI Jakarta") {
+                var array = ['Jakarta Pusat', 'Jakarta Utara', 'Jakarta Selatan', 'Jakarta Barat'];
+            }
+            else {
+                var array = [];
+            }
+            var string = "";
+            for (let index = 0; index < array.length; index++) {
+                string = string + "<option>" + array[index] + "</option>";
+            }
+            let namkota = document.getElementById('Kota').innerHTML = string;
+        }
+        function getKota() {
+            var prov = document.getElementById("Provinsi").value;
+            var kota = document.getElementById("Kota").value;
+            var result = document.getElementById("result");
+            result.innerText = "Pada provinsi " + prov + " ada kota " + kota;
+        }
+        function Change() {
+            console.log()
+            var gantitema = document.body;
+            gantitema.classList.toggle("dark-mode");
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
